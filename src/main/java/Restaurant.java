@@ -62,8 +62,23 @@ public class Restaurant {
         return name;
     }
 
-    public int getOrderCost(String[] items) {
+    private int getPrice(String item) {
+        for (Item menuItem : this.menu) {
+            if (item == menuItem.getName()) {
+                return menuItem.getPrice();
+            }
+        }
         return 0;
+    }
+
+    public int getOrderCost(String[] items) {
+        // before implementation, always returns 0
+        // return 0;
+        int totalCost = 0;
+        for (String item : items) {
+            totalCost += getPrice(item);
+        }
+        return totalCost;
     }
 
 }
