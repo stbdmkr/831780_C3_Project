@@ -62,4 +62,8 @@ public class Restaurant {
         return name;
     }
 
+    public int getOrderCost(String[] items) {
+        return 0;
+    }
+
 }

@@ -80,5 +80,16 @@ class RestaurantTest {
 
         assertThrows(itemNotFoundException.class, () -> restaurant.removeFromMenu("French fries"));
     }
+
     // <<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void get_order_shows_correct_order_price() {
+        restaurant = createDummyRestaurant();
+        // default case: 0 order cost
+        assertEquals(0, restaurant.getOrderCost(new String[] {}));
+        // non-zero order costs
+        assertEquals(119, restaurant.getOrderCost(new String[] { "Sweet corn soup" }));
+        assertEquals(269, restaurant.getOrderCost(new String[] { "Vegetable lasagne" }));
+        assertEquals(388, restaurant.getOrderCost(new String[] { "Sweet corn soup", "Vegetable lasagne" }));
+    }
 }
